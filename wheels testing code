@@ -1,0 +1,41 @@
+/*
+EUROBOT 2013
+
+TEAM 8
+
+NIKHIL GROVER M00385898
+JAY KUMAR
+
+FINAL ON 16/04/2013
+
+*/
+
+
+#include <HUBeeBMDWheel.h> 
+
+
+int pin1=13;
+int pin2=12;
+int pwm1=11;
+int pin3=10;
+int pin4=8;
+int pwm2=9;
+
+
+HUBeeBMDWheel leftWheel(13 , 12, 11);
+HUBeeBMDWheel rightWheel(10,8,9);
+
+void setup(){
+
+pinMode(7,OUTPUT);
+  digitalWrite(7,HIGH);
+  
+}
+
+void loop (){
+  
+  rightWheel.setMotorPower(-255);
+  
+  leftWheel.setMotorPower(255);
+  
+}
