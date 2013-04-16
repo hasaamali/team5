@@ -1,0 +1,74 @@
+#include <HUBeeBMDWheel.h>
+int input1=13;
+int input2=12;
+int pwm1=11;
+int input3=9;
+int input4=8;
+int pwm2=10 ;
+volatile int countRight=0;
+int previousCountRight=-1;
+volatile int countLeft=0;
+int previousCountLeft=-1;
+byte encA=2;
+byte encB=4;
+byte encC=3;
+byte encD=5;
+HUBeeBMDWheel leftWheel(input1 , input2, pwm1);
+HUBeeBMDWheel rightWheel(input3, input4, pwm2);
+void setup() {
+// put your setup code here, to run once:
+pinMode(encA, INPUT);
+pinMode(encB, INPUT);
+//leftWheel.setBrakeMode(1);
+//rightWheel.setBrakeMode(1);
+pinMode(encC, INPUT);
+pinMode(encD, INPUT);
+attachInterrupt(0, checkEncoderLeft, CHANGE);
+attachInterrupt(1, checkEncoderRight, CHANGE);
+Serial.begin(9600);
+Moving(250);
+delay(900);
+turnLeft(115);
+countLeft=0;
+countRight=0;
+delay(900);
+Moving(255);
+delay(900);
+turnLeft(115);
+countLeft=0;
+countRight=0;
+delay(900);
+Moving(255);
+delay(900);
+Backward(255);
+delay(900);
+turnLeft(115);
+countLeft=0;
+countRight=0;
+delay(900);
+Moving(255);
+delay(900);
+turnLeft(115);
+countLeft=0;
+countRight=0;
+delay(900);
+}
+void loop() {
+Serial.print(countLeft);
+Serial.print(" ");
+Serial.println(countRight);
+}
+void checkEncoderLeft(){
+if(((PIND & B00000100)<<2) == (PIND & B00010000)){
+countLeft++;
+}else{
+countLeft--; 
+}
+}
+void checkEncoderRight(){
+if((PIND & B00100000) == (PIND & B00001000)<<2){
+countRight--;
+}else{
+countRight++; 
+}
+}
