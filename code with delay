@@ -1,0 +1,13 @@
+HUBeeBMDWheel leftWheel(12, 11, 10);
+HUBeeBMDWheel rightWheel(7, 6, 5);
+
+void setup() {
+}
+
+void loop() {
+  leftWheel.setMotorPower(255);
+  rightWheel.setMotorPower(-255);
+  delay(900);
+  rightWheel.stopMotor();
+  delay(900);
+}
