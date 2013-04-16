@@ -1,0 +1,12 @@
+int Backward(int distance)
+{
+int finalDestinationLeft = countLeft + distance;
+int finalDestinationRight = countRight + distance;
+while ((countLeft < finalDestinationLeft) || (countRight < finalDestinationRight))
+{
+leftWheel.setMotorPower(255);
+rightWheel.setMotorPower(-220);
+}
+rightWheel.stopMotor();
+leftWheel.stopMotor();
+}
