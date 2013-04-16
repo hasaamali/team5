@@ -1,0 +1,26 @@
+int turnLeft(int angle)
+{
+int finalAngle = countRight + angle;
+while (countRight <= finalAngle)
+{
+rightWheel.setMotorPower(220);
+}
+rightWheel.stopMotor();
+Serial.print(countLeft);
+Serial.print(" ");
+Serial.println(countRight);
+}
+int Moving(int distance){
+int finalDestinationLeft = countLeft + distance;
+int finalDestinationRight = countRight + distance;
+while ((countLeft<finalDestinationLeft) || (countRight<finalDestinationRight))
+{
+leftWheel.setMotorPower(-255);
+rightWheel.setMotorPower(220);
+Serial.print(countLeft);
+Serial.print(" ");
+Serial.println(countRight);
+}
+leftWheel.stopMotor();
+rightWheel.stopMotor();
+}
